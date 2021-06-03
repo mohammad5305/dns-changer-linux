@@ -1,11 +1,17 @@
 # /bin/bash
-if [ $# -eq 0 ] 
-then
-	echo "type ur dns after the file name like \n ./dns-changer 8.8.8.8"
-	echo "for back to defualt type set b as arg like : \n ./dns-changer set b "
-# [elif [$1 = "set b"]]
-# then 
-#     sudo systemctl restart NetworkManager
+if [ $UID -eq 0 ]; then
+    if [ $# -eq 0 ] 
+    then
+	    echo -e "type ur dns after the file name like :\n./dns-changer 8.8.8.8"
+	    echo -e "for back to defualt type back as arg like : \n./dns-changer back"
+    elif [ $1 == "back" ]
+    then 
+        echo "restarting ..."
+        systemctl restart NetworkManager
+    else 
+        echo "dns $1 added"
+	    echo "nameserver $1"  | tee -a /etc/resolv.conf  >> /dev/null
+    fi
 else 
-	echo "nameserver $1" | sudo tee -a /etc/resolv.conf
+    echo "permission denied"
 fi
