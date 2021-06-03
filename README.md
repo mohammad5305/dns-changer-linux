@@ -8,6 +8,14 @@ git clone https://github.com/mohammad5305/dns-changer-linux.git
 cd dns-changer-linux
 ```
 ### python 
+requirements :
+- termcolor
+- pyfiglet
+
+```
+pip3 install termcolor pyfiglet
+```
+then run the scirpt : 
 ```
 python3 dns-changer.py
 ```
