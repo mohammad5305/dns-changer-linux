@@ -1,0 +1,11 @@
+# /bin/bash
+if [ $# -eq 0 ] 
+then
+	echo "type ur dns after the file name like \n ./dns-changer 8.8.8.8"
+	echo "for back to defualt type set b as arg like : \n ./dns-changer set b "
+# [elif [$1 = "set b"]]
+# then 
+#     sudo systemctl restart NetworkManager
+else 
+	echo "nameserver $1" | sudo tee -a /etc/resolv.conf
+fi
