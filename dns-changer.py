@@ -6,9 +6,9 @@ print(colored(figlet_format("dns changer", justify="center"), "green"))
 dns_list = {
     'google' : '8.8.8.8',
     'cisco' :'4.2.2.4',
-    'shakan' : '185.51.200.2',
+    'shekan' : '185.51.200.2',
 }
-for name in dns_list :
+for name in dns_list:
     print(f"- {name} \n ")
 
 ask = input("set dns or back to default: (s/b) \n")
@@ -22,7 +22,7 @@ if ask[0] == 's':
     elif dns in dns_list:
         system(f'echo nameserver  {dns_list[dns]} | sudo tee -a /etc/resolv.conf >> /dev/null')
         print(f"dns {dns} added")
-    else :
+    else:
         print("invalid dns")
 elif ask[0] == 'b':
     print("restarting ...")
