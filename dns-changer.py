@@ -7,6 +7,7 @@ dns_list = {
     'google' : '8.8.8.8',
     'cisco' :'4.2.2.4',
     'shekan' : '185.51.200.2',
+    'shekan2' : "178.22.122.100",
 }
 for name in dns_list:
     print(f"- {name} \n ")
