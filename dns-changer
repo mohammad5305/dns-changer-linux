@@ -3,11 +3,21 @@ if [ $UID -eq 0 ]; then
     if [ $# -eq 0 ] 
     then
 	    echo -e "type ur dns after the file name like :\n./dns-changer 8.8.8.8"
+	    echo -e "for add your dns as main dns type just in first of file name like : (recommended for shekan) \n ./dns-changer just 8.8.8.8"
 	    echo -e "for back to defualt type back as arg like : \n./dns-changer back"
     elif [ $1 == "back" ]
     then 
         echo "restarting ..."
         systemctl restart NetworkManager
+    elif [ $1 == "just" ]
+    then 
+        if [ -z $2 ]
+        then 
+            echo "Invalid dns"
+        else
+            echo "dns changed to $2"
+	        echo "nameserver $2"  | tee /etc/resolv.conf  >> /dev/null
+        fi 
     else 
         echo "dns $1 added"
 	    echo "nameserver $1"  | tee -a /etc/resolv.conf  >> /dev/null
